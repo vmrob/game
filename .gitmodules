@@ -1,0 +1,9 @@
+[submodule "deps/tinytest"]
+	path = deps/tinytest
+	url = https://github.com/Acronism/tinytest.git
+[submodule "deps/boost"]
+	path = deps/boost
+	url = https://github.com/boostorg/boost.git
+[submodule "deps/cinder"]
+	path = deps/cinder
+	url = https://github.com/cinder/Cinder.git

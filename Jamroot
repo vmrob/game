@@ -1,0 +1,13 @@
+lib game-lib : [ glob src/*.cpp : src/main.cpp ] :
+	<link>static
+	<toolset>darwin:<cxxflags>"-std=c++1y"
+: :
+	<link>static
+	<toolset>darwin:<cxxflags>"-std=c++1y"
+; 
+
+exe game : src/main.cpp game-lib ;
+
+install . : game ;
+
+build-project unittests ;

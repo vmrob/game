@@ -1,0 +1,7 @@
+using testing ;
+
+alias tinytest : ../deps/tinytest//tinytest ;
+
+exe unittests : [ glob *.cpp ] ..//game-lib tinytest ;
+
+unit-test tests : unittests ;
