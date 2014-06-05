@@ -1,9 +1,26 @@
+lib cinder : :
+	<variant>release:<file>deps/lib/libcinder.a
+	<variant>debug:<file>deps/lib/libcinder_d.a
+: :
+	<framework>Cocoa
+	<framework>OpenGL
+	<framework>Carbon
+	<framework>AudioToolbox
+	<framework>AudioUnit
+	<framework>CoreAudio
+	<framework>CoreVideo
+	<framework>QTKit
+	<framework>Quicktime
+	<framework>Accelerate
+;
+
 lib game-lib : [ glob src/*.cpp : src/main.cpp ] :
 	<link>static
 	<toolset>darwin:<cxxflags>"-std=c++1y"
 : :
 	<link>static
 	<toolset>darwin:<cxxflags>"-std=c++1y"
+	<library>cinder
 ; 
 
 exe game : src/main.cpp game-lib ;

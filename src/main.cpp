@@ -1,5 +1,3 @@
-#include <iostream>
+#include "App.h"
 
-int main() {
-	std::cout << "hello world" << std::endl;
-}
+CINDER_APP_BASIC( GameApp , cinder::app::RendererGl )
