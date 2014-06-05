@@ -9,8 +9,9 @@ GameApp::GameApp()
 }
 
 void GameApp::setup() {
-	ci::CameraPersp cam(ci::app::getWindowWidth() * 0.5f, ci::app::getWindowHeight(), 40.0f, 0.1f, 1000.0f);
-	cam.setEyePoint(ci::Vec3f(-50.0f, 0.0f, 0.0f));
+	ci::CameraPersp cam(ci::app::getWindowWidth() * 0.5f, ci::app::getWindowHeight(), 60.0f, 0.0f, 1000.0f);
+	cam.setEyePoint(ci::Vec3f(0.0f, 0.0f, 50.0f));
+	cam.setWorldUp(ci::Vec3f(0.0f, 1.0f, 0.0f));
 	cam.setCenterOfInterestPoint(ci::Vec3f::zero());
 
 	_mayaCam.setCurrentCam(cam);
@@ -25,9 +26,7 @@ void GameApp::draw() {
 
 	ci::gl::pushModelView();
 
-	auto center = ci::app::toPixels(ci::app::getWindowSize()) * 0.5;
-
-	ci::gl::translate(ci::Vec2f(center.x, center.y));
+	ci::gl::setModelView(_mayaCam.getCamera());
 
 	_terrain.draw();
 
@@ -43,9 +42,14 @@ void GameApp::_clear() {
 }
 
 void GameApp::mouseDown(ci::app::MouseEvent event) {
-
+	_mayaCam.mouseDown(event.getPos());
 }
 
 void GameApp::mouseDrag(ci::app::MouseEvent event) {
-
+	_mayaCam.mouseDrag(
+		event.getPos(),
+		event.isLeftDown() && !event.isShiftDown(),
+		event.isShiftDown(),
+		event.isRightDown()
+	);
 }

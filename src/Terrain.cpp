@@ -13,12 +13,10 @@ void Terrain::draw() {
 	ci::gl::enableWireframe();
 	ci::gl::pushModelView();
 
-	const double scalar = 50.0;
-	const double halfScalar = 0.5 * scalar;
+	const float scalar = 10.0f;
 
-	ci::gl::scale(scalar * ci::Vec2f::one());
-
-	// ci::gl::translate(-halfScalar * ci::Vec2f::one());
+	ci::gl::scale(scalar * ci::Vec3f::one());
+	ci::gl::translate(-scalar * 0.5 * ci::Vec2f::one());
 
 	ci::gl::draw(_mesh);
 
