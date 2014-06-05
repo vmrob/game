@@ -16,10 +16,10 @@ lib cinder : :
 
 lib game-lib : [ glob src/*.cpp : src/main.cpp ] :
 	<link>static
-	<toolset>darwin:<cxxflags>"-std=c++1y"
+	<toolset>darwin:<cxxflags>"-std=c++1y -fcolor-diagnostics"
 : :
 	<link>static
-	<toolset>darwin:<cxxflags>"-std=c++1y"
+	<toolset>darwin:<cxxflags>"-std=c++1y -fcolor-diagnostics"
 	<library>cinder
 ; 
 
